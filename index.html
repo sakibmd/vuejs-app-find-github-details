@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
+    <title>Github Info</title>
+</head>
+
+<body>
+    <div class="container" id="git_info">
+        <div class="row">
+
+        </div>
+        <div class="row my-4">
+            <div class="col-md-6">
+                <div class="card p-2">
+                    <div class="card-header">
+                        <h4>Get Github Details Easily</h4>
+                    </div>
+                    <div class="card-body">
+                        <br>
+                        <form @submit.prevent="get_details">
+                            <div class="form-group">
+                                <label for="username"><b>Username</b></label>
+                                <input placeholder="enter username" id="username" type="text" class="form-control" v-model="username" />
+                            </div>
+                            <div class="buttons">
+                                <button type="submit" class="btn btn-success btn-sm mr-2">Get Details</button>
+                                <a href class="btn btn-warning btn-sm" @click.prevent="reset">Reset</a>
+                            </div>
+                        </form>
+                    </div>
+
+
+                </div>
+            </div>
+            <div class="col-md-6" v-show="showresult">
+                <div v-if="userinfo.name">
+                    <table class="table table-bordered mt-2">
+                        <tr>
+                            <th>Name</th>
+                            <td>{{ userinfo.name }}</td>
+                        </tr>
+                        <tr>
+                            <th>Profile Photo</th>
+                            <td>
+                                <img :src="userinfo.avatar_url" :alt="userinfo.name" height="250" width="250" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Username</th>
+                            <td>{{ userinfo.login }}</td>
+                        </tr>
+                        <tr>
+                            <th>Id</th>
+                            <td>{{ userinfo.id }}</td>
+                        </tr>
+                        <tr>
+                            <th>Email</th>
+                            <td>{{ userinfo.blog }}</td>
+                        </tr>
+                        <tr>
+                            <th>Organization</th>
+                            <td>{{ userinfo.company }}</td>
+                        </tr>
+                        <tr>
+                            <th>Location</th>
+                            <td>{{ userinfo.location }}</td>
+                        </tr>
+                        <tr>
+                            <th>Followers</th>
+                            <td>{{ userinfo.followers }}</td>
+                        </tr>
+                        <tr>
+                            <th>Following</th>
+                            <td>{{ userinfo.following }}</td>
+                        </tr>
+                        <tr>
+                            <th>Repository</th>
+                            <td>{{ userinfo.public_repos }}</td>
+                        </tr>
+                        <tr>
+                            <th>Twitter username</th>
+                            <td>{{ userinfo.twitter_username }}</td>
+                        </tr>
+                        <tr>
+                            <th>Account Created</th>
+                            <td>{{ userinfo.created_at.substring(0, 10) }}</td>
+                        </tr>
+                        <tr>
+                            <th>Repository</th>
+                            <td>{{ userinfo.public_repos }}</td>
+                        </tr>
+                    </table>
+                </div>
+                <div v-else>
+                    <div v-if="!showresult" class="card">
+                        <h6>Invalid Result! Please Enter a valid username</h6>
+                    </div>
+                    <div else class="card">
+                        <h6>Please wait....</h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="https://unpkg.com/vue@next"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
