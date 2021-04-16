@@ -12,10 +12,10 @@
 
 <body>
     <div class="container" id="git_info">
-        <div class="row">
-
+        <div class="row justify-content-center my-4 mx-2">
+            <h5 class="text-center">Enter a valid github username it shows the github details information of that user. (Ex: sakibmd, lahin31, hasinhayder)</h5>
         </div>
-        <div class="row my-4">
+        <div class="row justify-content-center my-4">
             <div class="col-md-6">
                 <div class="card p-2">
                     <div class="card-header">
@@ -48,7 +48,7 @@
                         <tr>
                             <th>Profile Photo</th>
                             <td>
-                                <img :src="userinfo.avatar_url" :alt="userinfo.name" height="250" width="250" />
+                                <img :src="userinfo.avatar_url" :alt="userinfo.name" height="200" width="180" />
                             </td>
                         </tr>
                         <tr>
@@ -97,11 +97,11 @@
                         </tr>
                     </table>
                 </div>
-                <div v-else>
-                    <div v-if="!showresult" class="card">
-                        <h6>Invalid Result! Please Enter a valid username</h6>
+                <div class="text-center" v-else>
+                    <div v-if="userinfo['message'] == 'Not Found'" class="card mt-3 p-3 bg-danger text-white">
+                        <h6>Invalid Username! Please enter a valid username</h6>
                     </div>
-                    <div else class="card">
+                    <div v-else class="card p-3">
                         <h6>Please wait....</h6>
                     </div>
                 </div>
@@ -110,8 +110,8 @@
     </div>
 
 
-    <script src="https://unpkg.com/vue@next"></script>
-    <script src="script.js"></script>
+    <script src="https://unpkg.com/vue@next "></script>
+    <script src="script.js "></script>
 </body>
 
 </html>
