@@ -17,11 +17,13 @@ const GitInfo = {
                     console.log(this.userinfo.company);
                 });
             this.showresult = true;
+
         },
         reset() {
             this.username = "";
             this.showresult = false;
             this.userinfo = [];
+
         },
     },
 }
