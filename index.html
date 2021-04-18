@@ -1,19 +1,27 @@
 <!DOCTYPE html>
-
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/style.css" />
     <title>Github Info</title>
 </head>
 
 <body>
+    <!--PreLoader Start -->
+    <div id="preloader">
+        <div id="status">&nbsp;</div>
+    </div>
+    <!-- PreLoader End -->
+
     <div class="container" id="git_info">
         <div class="row justify-content-center my-4 mx-2">
-            <h5 class="text-center">Enter a valid github username it shows the github details information of that user. (Ex: sakibmd, lahin31, hasinhayder)</h5>
+            <h5 class="text-center">
+                Enter a valid github username it shows the github details information of that user. (Ex: sakibmd, lahin31, hasinhayder)
+            </h5>
         </div>
         <div class="row justify-content-center my-4">
             <div class="col-md-6">
@@ -22,7 +30,7 @@
                         <h4>Get Github Details Easily</h4>
                     </div>
                     <div class="card-body">
-                        <br>
+                        <br />
                         <form @submit.prevent="get_details">
                             <div class="form-group">
                                 <label for="username"><b>Username</b></label>
@@ -30,84 +38,90 @@
                             </div>
                             <div class="buttons">
                                 <button type="submit" class="btn btn-success btn-sm mr-2">Get Details</button>
-                                <a href class="btn btn-warning btn-sm" @click.prevent="reset">Reset</a>
-                            </div>
-                        </form>
-                    </div>
-
-
+                                <a href class="btn btn-warning btn-sm" @click.prevent="reset">Reset</a
+                  >
                 </div>
+              </form>
             </div>
-            <div class="col-md-6" v-if="showresult">
-                <div v-if="userinfo.id">
-                    <table class="table table-bordered mt-2">
-                        <tr>
-                            <th>Name</th>
-                            <td>{{ userinfo.name }}</td>
-                        </tr>
-                        <tr>
-                            <th>Profile Photo</th>
-                            <td>
-                                <img :src="userinfo.avatar_url" :alt="userinfo.name" height="200" width="180" />
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>Username</th>
-                            <td>{{ userinfo.login }}</td>
-                        </tr>
-                        <tr>
-                            <th>Id</th>
-                            <td>{{ userinfo.id }}</td>
-                        </tr>
-                        <tr>
-                            <th>Email</th>
-                            <td>{{ userinfo.blog }}</td>
-                        </tr>
-                        <tr>
-                            <th>Organization</th>
-                            <td>{{ userinfo.company }}</td>
-                        </tr>
-                        <tr>
-                            <th>Location</th>
-                            <td>{{ userinfo.location }}</td>
-                        </tr>
-                        <tr>
-                            <th>Followers</th>
-                            <td>{{ userinfo.followers }}</td>
-                        </tr>
-                        <tr>
-                            <th>Following</th>
-                            <td>{{ userinfo.following }}</td>
-                        </tr>
-                        <tr>
-                            <th>Repository</th>
-                            <td>{{ userinfo.public_repos }}</td>
-                        </tr>
-                        <tr>
-                            <th>Twitter username</th>
-                            <td>{{ userinfo.twitter_username }}</td>
-                        </tr>
-                        <tr>
-                            <th>Account Created</th>
-                            <td>{{ userinfo.created_at.substring(0, 10) }}</td>
-                        </tr>
-                    </table>
-                </div>
-                <div class="text-center" v-else>
-                    <div v-if="userinfo['message'] == 'Not Found'" class="card mt-3 p-3 bg-danger text-white">
-                        <h6>Invalid Username! Please enter a valid username</h6>
-                    </div>
-                    <div v-else class="card p-3">
-                        <h6>Please wait....</h6>
-                    </div>
-                </div>
-            </div>
+          </div>
         </div>
+        <div class="col-md-6" v-if="showresult">
+          <div v-if="userinfo.id">
+            <table class="table table-bordered mt-2">
+              <tr>
+                <th>Name</th>
+                <td>{{ userinfo.name }}</td>
+              </tr>
+              <tr>
+                <th>Profile Photo</th>
+                <td>
+                  <img
+                    :src="userinfo.avatar_url"
+                    :alt="userinfo.name"
+                    height="200"
+                    width="180"
+                  />
+                </td>
+              </tr>
+              <tr>
+                <th>Username</th>
+                <td>{{ userinfo.login }}</td>
+              </tr>
+              <tr>
+                <th>Id</th>
+                <td>{{ userinfo.id }}</td>
+              </tr>
+              <tr>
+                <th>Email</th>
+                <td>{{ userinfo.blog }}</td>
+              </tr>
+              <tr>
+                <th>Organization</th>
+                <td>{{ userinfo.company }}</td>
+              </tr>
+              <tr>
+                <th>Location</th>
+                <td>{{ userinfo.location }}</td>
+              </tr>
+              <tr>
+                <th>Followers</th>
+                <td>{{ userinfo.followers }}</td>
+              </tr>
+              <tr>
+                <th>Following</th>
+                <td>{{ userinfo.following }}</td>
+              </tr>
+              <tr>
+                <th>Repository</th>
+                <td>{{ userinfo.public_repos }}</td>
+              </tr>
+              <tr>
+                <th>Twitter username</th>
+                <td>{{ userinfo.twitter_username }}</td>
+              </tr>
+              <tr>
+                <th>Account Created</th>
+                <td>{{ userinfo.created_at.substring(0, 10) }}</td>
+              </tr>
+            </table>
+          </div>
+          <div class="text-center" v-else>
+            <div
+              v-if="userinfo['message'] == 'Not Found'"
+              class="card mt-3 p-3 bg-danger text-white"
+            >
+              <h6>Invalid Username! Please enter a valid username</h6>
+            </div>
+            <div v-else class="card p-3">
+              <h6>Please wait....</h6>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
-
+    <script src="js/jquery-3.5.0.min.js"></script>
     <script src="js/vue.global.js"></script>
     <script src="js/script.js "></script>
-</body>
-
+  </body>
 </html>

@@ -1,4 +1,4 @@
-## It a very little vue.js standalone app that I had made for my practicing purpose. 
+## It's a very little vue.js standalone app that I had made for my practicing purpose. 
 
 ## You can find anyone's github profile details by using this app.
 
