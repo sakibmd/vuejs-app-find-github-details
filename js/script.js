@@ -1,11 +1,4 @@
-jQuery(function($) {
-    $(window).on('load', function() { // makes sure the whole site is loaded 
-        $('#status').fadeOut(); // will first fade out the loading animation 
-        $('#preloader').delay(350).fadeOut('slow'); // will fade out the white DIV that covers the website. 
-        $('body').delay(350).css({ 'overflow': 'visible' });
-    })
-});
-
+window.onload = function() { document.querySelector(".preloader").style.display = "none"; }
 
 const GitInfo = {
     data() {
@@ -22,9 +15,11 @@ const GitInfo = {
                     return res.json();
                 })
                 .then((data) => {
+
                     this.userinfo = data;
                     console.log(this.userinfo.company);
                 });
+
             this.showresult = true;
         },
         reset() {
